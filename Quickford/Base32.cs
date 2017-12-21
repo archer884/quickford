@@ -5,7 +5,7 @@ namespace Quickford
 {
     public class Base32
     {
-        const ulong StopBit = 1 << QuadShift;
+        const ulong StopBit = 1ul << QuadShift;
 
         const int QuadShift = 60;
         const int QuadReset = 4;
@@ -23,7 +23,6 @@ namespace Quickford
             input <<= QuadReset;
             input |= 1;
 
-            int fiveBitGroups = 12;
             if (firstFourBits > 0)
             {
                 // In this case, we have no leading zeros to deal with.
@@ -36,11 +35,10 @@ namespace Quickford
                 while (input >> FiveShift == 0)
                 {
                     input <<= FiveReset;
-                    --fiveBitGroups;
                 }
             }
 
-            for (var i = 0; i < fiveBitGroups; ++i)
+            while (input != StopBit)
             {
                 output.Append(Encoding.Uppercase[input >> FiveShift]);
                 input <<= FiveReset;
