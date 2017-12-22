@@ -128,6 +128,7 @@ namespace Quickford
                         digit = 0;
                         return false;
                     }
+
             }
         }
     }
