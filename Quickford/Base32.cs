@@ -110,17 +110,11 @@ namespace Quickford
                     return false;
 
                 default:
-                    
-                    if (u >= '0' && u <= '9')
-                    {
-                        digit = (byte)(u - IntOffset);
-                        return true;
-                    }
 
-                    var searchIndex = Array.BinarySearch(Encoding.Uppercase, (char)(u & ~CaseFlag));
-                    if (searchIndex >= 0)
+                    var result = Encoding.ValueMapping[u];
+                    if (result > -1)
                     {
-                        digit = (byte)searchIndex;
+                        digit = (byte)result;
                         return true;
                     }
                     else
