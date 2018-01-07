@@ -1,8 +1,0 @@
-language: csharp
-solution: Quickford.sln
-install:
-  - nuget restore Quickford.sln
-  - nuget install xunit.runners -Version 1.9.2 -OutputDirectory testrunner
-script:
-  - xbuild /p:Configuration=Release Quickford.sln
-  - mono ././testrunner/xunit.runners.1.9.2/tools/xunit.console.clr4.exe ./MyProject.Tests/bin/Release/Quickford.Tests.dll
