@@ -6,9 +6,9 @@
 
 This library does not support encoding and decoding of arbitrary data. Additionally, the spec supports the idea of check digits, but this library currently does not.
 
-**The primary purpose of this library is to provide high performance, user-resistant encoding of numeric identifiers.** To that end, both encoding and decoding are, in fact, pretty darn fast--an average of eight times faster than the most popular alternative on nuget.org. Additionally, no initialization is required; all methods are static.
+**The primary purpose of this library is to provide high performance, user-resistant encoding of numeric identifiers.** To that end, both encoding and decoding are, in fact, pretty darn fast--an average of eight times faster than the most popular alternative on nuget.org. Additionally, no initialization is required; all methods are static. (And I mean *static.* There is no lazy initialization nonsense here!)
 
-This library is a port of [crockford](https://github.com/archer884/crockford) for Rust. The present API is stable, but it may be expanded in the future to encompass more of what crockford offers in terms of efficiency for encoding. (Note: when I say static, I mean it. There is no lazy initialization here. Quickford is ready to rock and roll from the moment it gets jitted.)
+This library is a port of [crockford](https://github.com/archer884/crockford) for Rust. The present API is stable, but it may be expanded in the future to encompass more of what crockford offers in terms of efficiency for encoding.
 
 ## Usage
 
