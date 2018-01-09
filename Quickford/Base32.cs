@@ -12,6 +12,11 @@ namespace Quickford
         const int FiveShift = 59;
         const int FiveReset = 5;
 
+        /// <summary>
+        /// Encodes an unsigned long as a Crockford Base32 string.
+        /// </summary>
+        /// <param name="input">Unsigned long to be encoded</param>
+        /// <returns>Base32-encoded string</returns>
         public static string Encode(ulong input)
         {
             if (input == 0) { return "0"; }
@@ -52,6 +57,11 @@ namespace Quickford
         const ulong Base = 0x20;
         const int PlaceShift = 5;
 
+        /// <summary>
+        /// Attempts to decode a string as Crockford Base32.
+        /// </summary>
+        /// <param name="input">String to be decoded</param>
+        /// <returns>Unsigned long or null</returns>
         public static ulong? Decode(string input)
         {
             // This is obviously not a number.
