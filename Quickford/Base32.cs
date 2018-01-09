@@ -6,11 +6,11 @@ namespace Quickford
     public class Base32
     {
         // Encoding constants.
-        const ulong StopBit = 1ul << QuadShift;
         const int QuadShift = 60;
         const int QuadReset = 4;
         const int FiveShift = 59;
         const int FiveReset = 5;
+        const ulong StopBit = 1ul << QuadShift;
 
         /// <summary>
         /// Encodes an unsigned long as a Crockford Base32 string.
