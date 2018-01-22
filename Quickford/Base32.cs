@@ -19,9 +19,23 @@ namespace Quickford
         /// <returns>Base32-encoded string</returns>
         public static string Encode(ulong input)
         {
-            if (input == 0) { return "0"; }
+            if (input == 0)
+            {
+                return "0";
+            }
 
-            var output = new StringBuilder();
+            var buffer = new StringBuilder(13);
+            Encode(input, buffer);
+            return buffer.ToString();
+        }
+
+        public static void Encode(ulong input, StringBuilder buffer)
+        {
+            if (input == 0)
+            {
+                buffer.Append('0');
+                return;
+            }
 
             var firstFourBits = input >> QuadShift;
             input <<= QuadReset;
@@ -30,7 +44,7 @@ namespace Quickford
             if (firstFourBits > 0)
             {
                 // In this case, we have no leading zeros to deal with.
-                output.Append(Encoding.Uppercase[firstFourBits]);
+                buffer.Append(Encoding.Uppercase[firstFourBits]);
             }
             else
             {
@@ -44,11 +58,9 @@ namespace Quickford
 
             while (input != StopBit)
             {
-                output.Append(Encoding.Uppercase[input >> FiveShift]);
+                buffer.Append(Encoding.Uppercase[input >> FiveShift]);
                 input <<= FiveReset;
             }
-
-            return output.ToString();
         }
 
         // Decoding constants.
