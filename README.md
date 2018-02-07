@@ -23,6 +23,16 @@ Assert.Equal("4ZQ", x);
 
 If you want lowercase, then... Well, tough. However, we do now support encoding to a buffer of your choice rather than a new one created in the function. Read on to learn about plan B...
 
+### Alternate encoding
+
+```csharp
+var buffer = new StringBuilder();
+Base32.Encode(5111, buffer);
+Assert.Equal("4ZQ", buffer.ToString());
+```
+
+...This will allow you to avoid additional allocations associated with creating a new stringbuilder on each call to `Encode()`. The call to `ToString()` is unavoidable.
+
 ### Decoding
 
 Decoding is a two-step process. This is because you can feed any string to the decoder, and the decoder will return an error if you try to convince it that `"Hello, world!"` is a number. (Hint: it isn't.)
