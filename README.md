@@ -8,7 +8,7 @@ This library does not support encoding and decoding of arbitrary data. Additiona
 
 **The primary purpose of this library is to provide high performance, user-resistant encoding of numeric identifiers.** To that end, both encoding and decoding are, in fact, pretty darn fast--an average of eight times faster than the most popular alternative on nuget.org. Additionally, no initialization is required; all methods are static. (And I mean *static.* There is no lazy initialization nonsense here!)
 
-This library is a port of [crockford](https://github.com/archer884/crockford) for Rust. The present API is stable, but it may be expanded in the future to encompass more of what crockford offers in terms of efficiency for encoding.
+This library is a port of [crockford](https://github.com/archer884/crockford) for Rust.
 
 ## Usage
 
