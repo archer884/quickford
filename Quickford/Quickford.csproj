@@ -6,8 +6,8 @@
     <Authors>J/A</Authors>
     <Description>Crockford Base32 encoding for 64-bit identifiers. In comparison to other, similar libraries, quickford focuses on speed and efficiency. Have fun saving electricity!</Description>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageReleaseNotes>Pre-release. Added sparse array decoding.</PackageReleaseNotes>
-    <Copyright>Copyright 2017 (c) John M Archer. All rights reserved.</Copyright>
+    <PackageReleaseNotes>Initial release.</PackageReleaseNotes>
+    <Copyright>Copyright 2018 (c) John M Archer. All rights reserved.</Copyright>
     <PackageTags>Crockford Base32 encoding decoding</PackageTags>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Version>1.0.0</Version>
