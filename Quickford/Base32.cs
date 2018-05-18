@@ -73,36 +73,41 @@ namespace Quickford
         /// Attempts to decode a string as Crockford Base32.
         /// </summary>
         /// <param name="input">String to be decoded</param>
-        /// <returns>Unsigned long or null</returns>
-        public static ulong? Decode(string input)
+        /// <param name="decoded">Decoded output</param>
+        /// <returns>Boolean indicating success or failure of the decoding operation</returns>
+        public static bool TryDecode(string input, out ulong decoded)
         {
-            // This is obviously not a number.
-            if (string.IsNullOrWhiteSpace(input))
-            {
-                return null;
-            }
+            decoded = 0ul;
 
-            // Encoded ulong values are never more than 13 digits.
-            if (input.Length > 13)
+            if (string.IsNullOrWhiteSpace(input) || input.Length > 13)
             {
-                return null;
+                return false;
             }
 
             var place = (ulong)Math.Pow(Base, input.Length - 1);
-            var n = 0ul;
             for (var i = 0; i < input.Length; ++i)
             {
                 if (ToNormalDigit(input[i], out var digit))
                 {
-                    n += digit * place;
+                    decoded += digit * place;
                     place >>= PlaceShift;
                 }
                 else
                 {
-                    return null;
+                    return false;
                 }
             }
-            return n;
+            return true;
+        }
+
+        /// <summary>
+        /// Attempts to decode a string as Crockford Base32.
+        /// </summary>
+        /// <param name="input">String to be decoded</param>
+        /// <returns>Unsigned long or null</returns>
+        public static ulong? Decode(string input)
+        {
+            return TryDecode(input, out var decoded) ? decoded as ulong? : null;
         }
 
         private static bool ToNormalDigit(char u, out byte digit)
